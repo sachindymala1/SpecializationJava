@@ -1,0 +1,287 @@
+Q1 - What is the output of the following application?>> Driving electric car
+class Automobile {
+    private String drive() {
+        return "Driving vehicle";
+    }
+}
+
+class Car extends Automobile {
+    protected String drive() {
+        return "Driving car";
+    }
+}
+
+public class ElectricCar extends Car {
+
+    @Override
+    public final String drive() {
+        return "Driving electric car";
+    }
+
+    public static void main(String[] wheels) {
+        final Car car = new ElectricCar();
+        System.out.print(car.drive());
+    }
+}
+A. Driving vehicle
+==B. Driving electric car
+C. Driving car
+D. The code does not compile
+Q2 - Look at the following code and choose the right option for the word :>>public and protected both can be used.
+// Shape.java
+public class Shape {
+    protected void display() {
+        System.out.println("Display-base");
+    }
+}
+// Circle.java
+public class Circle extends Shape { <
+    < access - modifier > void display() {
+        System.out.println("Display-derived");
+    }
+}
+a. Only protected can be used.
+==B. public and protected both can be used.
+C. public, protected, and private can be used.
+d. Only public can be used.
+Q3 - What will be the output of the following program?
+>>Base
+Derived
+DeriDerived
+
+class Base {
+    public Base() {
+        System.out.println("Base");
+    }
+}
+
+class Derived extends Base {
+    public Derived() {
+        System.out.println("Derived");
+    }
+}
+
+class DeriDerived extends Derived {
+    public DeriDerived() {
+        System.out.println("DeriDerived");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Derived b = new DeriDerived();
+    }
+}
+==a)
+Base
+Derived
+DeriDerived
+b)
+Derived
+DeriDerived
+c)
+DeriDerived
+Derived
+Base
+d)
+DeriDerived
+Derived
+Q4 - Consider the following program:
+>>b)c)d)
+class Base {
+    public Base() {
+        System.out.print("Base ");
+    }
+
+    public Base(String s) {
+        System.out.print("Base: " + s);
+    }
+}
+
+class Derived extends Base {
+    public Derived(String s) {
+        super(); // Stmt-1
+        super(s); // Stmt-2
+        System.out.print("Derived ");
+    }
+}
+
+class Test {
+    public static void main(String[] args) {
+        Base base = new Derived("Hello ");
+    }
+}
+Select three correct options from the following list:
+a) Removing Stmt-1 will make the program compilable and it will print the following: Base Derived.
+==b) Removing Stmt-1 will make the program compilable and it will print the following: Base: Hello Derived.
+==c) Removing Stmt-2 will make the program compilable and it will print the following: Base Derived.
+==d) Removing both Stmt-1 and Stmt-2 will make the program compilable and it will print the following: Base Derived.
+e) Removing both Stmt-1 and Stmt-2 will make the program compilable and it will print the following: Base: Hello Derived.
+Q5 - What is the output of the following application?
+abstract class Car {
+    static {
+        System.out.print("1");
+    }
+
+    public Car(String name) {
+        super();
+        System.out.print("2");
+    }
+
+    {
+        System.out.print("3");
+    }
+}
+
+public class BlueCar extends Car {
+    {
+        System.out.print("4");
+    }
+
+    public BlueCar() {
+        super("blue");
+        System.out.print("5");
+    }
+
+    public static void main(String[] gears) {
+        new BlueCar();
+    }
+}
+A. 23451
+B. 12354
+==C. 13245
+D. The code does not compile.
+
+Q6 - What is the output of the following application?
+class Math {
+    public final double secret = 2;
+}
+
+class ComplexMath extends Math {
+    public final double secret = 4;
+}
+
+public class InfiniteMath extends ComplexMath {
+    public final double secret = 8;
+
+    public static void main(String[] numbers) {
+        Math math = new InfiniteMath();
+        System.out.print(math.secret);
+    }
+}
+==A. 2
+B. 4
+C. 8
+D. The code does not compile.
+Q7 - Consider the following program and predict the output:
+==a) The program results in a compiler error
+public class Test {
+    public void print(Integer i) {
+        System.out.println("Integer");
+    }
+
+    public void print(int i) {
+        System.out.println("int");
+    }
+
+    public void print(long i) {
+        System.out.println("long");
+    }
+
+    public static void main(String args[]) {
+        Test test = new Test();
+        test.print(10);
+    }
+}
+a) The program results in a compiler error (“ambiguous overload”).
+b) long
+==c) Integer
+d) int
+
+
+1. What must be the first characters of a database URL?
+>> jdbc:
+A. db,
+B. db:
+C. jdbc,
+==D. jdbc:
+
+2. Which of these obtains a Connection?
+>>DriverManager.getConnection(url)
+A. Connection.getConnection(url)
+B. Driver.getConnection(url)
+==C. DriverManager.getConnection(url)
+D. new Connection(url)
+
+3. Which is responsible for getting a connection to the database?
+>> Driver
+==A. Driver
+B. Connection
+C. Statement
+D. ResultSet
+
+4. What is the output when run with a JDBC 4.0 driver if the "demo" database exists and contains an empty "users" table?>>The code does not compile.
+String url = "jdbc:derby:demo";
+try (Connection conn = DriverManager.getConnection(url); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery("select count(*) from users")) {
+    System.out.println(rs.getInt(1));
+}
+A. 0
+B. 1
+==C. The code does not compile.
+D. The code compiles but throws an exception at runtime.
+
+5. Which resources have their close() method called when this code runs?
+>>Only Statement and Connection
+public static void runQuery(Connection conn) throws SQLException {
+    try (Statement stmt = conn.createStatement()) {
+        ResultSet rs = stmt.executeQuery("select * from clowns");
+        rs.next();
+    }
+}
+A. No close() methods are called.
+
+B. Only Statement
+==C. Only Statement and Connection
+D. Only Statement and ResultSet
+
+6. How many rows are added to the colors table from running the following?
+>>One
+try (Connection conn = DriverManager.getConnection(url); Statement stmt = conn.createStatement()) {
+    conn.setAutoCommit(false);
+    stmt.executeUpdate("insert into colors values ('red')");
+    stmt.executeUpdate("insert into colors values ('blue')");
+    conn.commit();
+    conn.setAutoCommit(true);
+    stmt.executeUpdate("insert into colors values ('green')");
+}
+A. None
+==B. One
+C. Two
+D. Three
+
+7. What is the correct order to close database resources?
+>> ResultSet then Statement then Connection
+
+A. Connection then Statement then ResultSet
+==B. ResultSet then Statement then Connection
+C. Statement then Connection then ResultSet
+D. Statement then ResultSet then Connection
+
+8. Which of the following is not a valid type of ResultSet?>> ResultSet.TYPE_BACKWARD_ONLY
+
+A - ResultSet.TYPE_FORWARD_ONLY
+B - ResultSet.TYPE_SCROLL_INSENSITIVE
+C - ResultSet.TYPE_SCROLL_SENSITIVE
+==D - ResultSet.TYPE_BACKWARD_ONLY
+
+9. Which JDBC driver type is the JDBC-ODBC type?
+Type 1
+Type 2
+Type 3
+Type 4
+
+10. Which of the following is efficient than a statement due to the pre-compilation of SQL?>>PreparedStatement
+A - Statement
+==B - PreparedStatement
+C - CallableStatement
+D - None of the above.
